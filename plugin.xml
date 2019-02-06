@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-list"
+    version="2.0.3-dev">
+    <name>List</name>
+    <description>Cordova List Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,list</keywords>
+    <repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-list.git</repo>
+    <issue>https://issues.apache.org/jira/browse/CB/component/12320648</issue>
+
+    <js-module src="www/list.js" name="list">
+        <clobbers target="list" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="List" >
+                <param name="android-package" value="org.apache.cordova.List.List"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/List.java" target-dir="src/org/apache/cordova/List" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="List">
+                <param name="ios-package" value="CDVList"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVList.h" />
+        <source-file src="src/ios/CDVList.m" />
+    </platform>
+
+    <!-- windows -->
+    <platform name="windows">
+        <js-module src="src/windows/ListProxy.js" name="ListProxy">
+            <runs />
+        </js-module>
+    </platform>
+
+    <!-- browser -->
+    <platform name="browser">
+        <config-file target="config.xml" parent="/*">
+            <feature name="List">
+                <param name="browser-package" value="List" />
+            </feature>
+        </config-file>
+
+        <js-module src="src/browser/ListProxy.js" name="ListProxy">
+            <runs />
+        </js-module>
+    </platform>
+
+    <!-- osx -->
+    <platform name="osx">
+        <config-file target="config.xml" parent="/*">
+            <feature name="List">
+                <param name="ios-package" value="CDVList"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/osx/CDVList.h" />
+        <source-file src="src/osx/CDVList.m" />
+    </platform>
+
+
+</plugin>
